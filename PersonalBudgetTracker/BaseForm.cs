@@ -12,9 +12,21 @@ namespace PersonalBudgetTracker
 {
     public partial class BaseForm : Form
     {
+
+        public string connectionString = "Data Source=YOSIPAT\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True";
+
         public BaseForm()
         {
+
             InitializeComponent();
+
+            homePage.Visible = true;
+            walletPage.Visible = false;
+            budgetPage.Visible = false;
+            settingPage.Visible = false;
+
+            homePage.connectionString = connectionString;
+            homePage.runHomePage();
 
             // Add navigation event handlers to buttons
             btnHome.Click += btnHome_Click;
@@ -25,46 +37,57 @@ namespace PersonalBudgetTracker
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            // Check if HomeForm is already open
-            if (Application.OpenForms["HomeForm"] == null)
-            {
-                HomeForm homeForm = new HomeForm();
-                homeForm.Show();
-            }
-            this.Close(); // Close the current form
+            homePage.connectionString = connectionString;
+            homePage.runHomePage();
+
+            homePage.Visible = true;
+            walletPage.Visible = false;
+            budgetPage.Visible = false;
+            settingPage.Visible = false;
+
         }
 
         private void btnBudget_Click(object sender, EventArgs e)
         {
-            // Check if BudgetForm is already open
-            if (Application.OpenForms["BudgetForm"] == null)
-            {
-                BudgetForm budgetForm = new BudgetForm();
-                budgetForm.Show();
-            }
-            this.Close(); // Close the current form
+            budgetPage.connectionString = connectionString;
+            budgetPage.runBudget();
+
+            homePage.Visible = false;
+            walletPage.Visible = false;
+            budgetPage.Visible = true;
+            settingPage.Visible = false;
         }
 
         private void btnWallet_Click(object sender, EventArgs e)
         {
-            // Check if WalletForm is already open
-            if (Application.OpenForms["WalletForm"] == null)
-            {
-                WalletForm walletForm = new WalletForm();
-                walletForm.Show();
-            }
-            this.Close(); // Close the current form
+            walletPage.connectionString = connectionString;
+            walletPage.runWallet();
+
+            homePage.Visible = false;
+            walletPage.Visible = true;
+            budgetPage.Visible = false;
+            settingPage.Visible = false;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            // Check if SettingsForm is already open
-            if (Application.OpenForms["SettingsForm"] == null)
-            {
-                SettingsForm settingsForm = new SettingsForm();
-                settingsForm.Show();
-            }
-            this.Close(); // Close the current form
+            settingPage.connectionString = connectionString;
+            settingPage.runSetting();
+
+            homePage.Visible = false;
+            walletPage.Visible = false;
+            budgetPage.Visible = false;
+            settingPage.Visible = true;
+        }
+
+        private void BaseForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -68,7 +68,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(318, 381);
+            ClientSize = new Size(294, 381);
             Controls.Add(btnStart);
             Controls.Add(pictureBox1);
             Controls.Add(lblApp);

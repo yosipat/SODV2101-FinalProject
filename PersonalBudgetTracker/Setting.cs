@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace PersonalBudgetTracker
 {
-    public partial class BudgetForm : BaseForm
+
+    public partial class Setting : UserControl
     {
-        public BudgetForm()
+
+        public string connectionString { get; set; }
+        public Setting()
         {
             InitializeComponent();
         }
 
-        private void comboBoxBudget_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        public void runSetting() {
+            }
     }
 }

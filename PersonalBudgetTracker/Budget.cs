@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace PersonalBudgetTracker
 {
-    public partial class HomeForm : BaseForm
+    public partial class Budget : UserControl
     {
-        public HomeForm()
+        public string connectionString { get; set; }
+        public Budget()
         {
             InitializeComponent();
+        }
+
+        public void runBudget()
+        {
+
         }
     }
 }

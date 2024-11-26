@@ -37,6 +37,10 @@
             btnHome = new CustomButton();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            homePage = new Home();
+            walletPage = new Wallet();
+            settingPage = new Setting();
+            budgetPage = new Budget();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -153,17 +157,55 @@
             panel2.Size = new Size(1454, 156);
             panel2.TabIndex = 5;
             // 
+            // homePage
+            // 
+            homePage.connectionString = null;
+            homePage.Location = new Point(310, 155);
+            homePage.Name = "homePage";
+            homePage.Size = new Size(1710, 855);
+            homePage.TabIndex = 6;
+            // 
+            // walletPage
+            // 
+            walletPage.connectionString = null;
+            walletPage.Location = new Point(310, 155);
+            walletPage.Name = "walletPage";
+            walletPage.Size = new Size(1710, 855);
+            walletPage.TabIndex = 7;
+            // 
+            // settingPage
+            // 
+            settingPage.connectionString = null;
+            settingPage.Location = new Point(310, 155);
+            settingPage.Name = "settingPage";
+            settingPage.Size = new Size(1710, 855);
+            settingPage.TabIndex = 8;
+            // 
+            // budgetPage
+            // 
+            budgetPage.connectionString = null;
+            budgetPage.Location = new Point(310, 155);
+            budgetPage.Name = "budgetPage";
+            budgetPage.Size = new Size(1710, 855);
+            budgetPage.TabIndex = 9;
+            // 
             // BaseForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1452, 726);
+            Controls.Add(budgetPage);
+            Controls.Add(settingPage);
+            Controls.Add(walletPage);
+            Controls.Add(homePage);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "BaseForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SummaryForm";
+            FormClosing += BaseForm_FormClosing;
+            Load += BaseForm_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -182,5 +224,9 @@
         private CustomButton btnBudget;
         private PictureBox pictureBox1;
         private Panel panel2;
+        private Home homePage;
+        private Wallet walletPage;
+        private Setting settingPage;
+        private Budget budgetPage;
     }
 }
