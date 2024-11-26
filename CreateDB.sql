@@ -21,5 +21,11 @@ CREATE TABLE Wallet (
 	wDate smalldatetime NOT NULL 
 );
 
-
+CREATE TABLE Budget (
+    BudgetId INT PRIMARY KEY IDENTITY(1,1),
+    Category NVARCHAR(50) NOT NULL,
+    BudgetLimit money NOT NULL,
+	wType NVARCHAR(50) NOT NULL,
+	wMonth smalldatetime NOT NULL 
+);
 

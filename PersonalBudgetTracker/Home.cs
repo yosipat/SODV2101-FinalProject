@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿
+using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Text.RegularExpressions;
 
 namespace PersonalBudgetTracker
 {
@@ -50,36 +41,37 @@ namespace PersonalBudgetTracker
         public void LoadFilter()
         {
             cbMonth.Items.Clear();
-                using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
                 {
-                    try
+                    connection.Open();
+                    string query = "SELECT DISTINCT DATENAME(month, wDate) AS month FROM Wallet";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        connection.Open();
-                        {
-                            string query = "Select DISTINCT DATENAME(month, wDate) as month from Wallet";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                SqlDataReader reader = command.ExecuteReader();
-                                DataTable data = new DataTable();
-                                data.Load(reader);
+                        SqlDataReader reader = command.ExecuteReader();
+                        DataTable data = new DataTable();
+                        data.Load(reader);
 
-                                foreach (DataRow row in data.Rows)
-                                {
-                                    cbMonth.Items.Add(row["month"]);
-                                }
-                                cbMonth.SelectedIndex = 0;
-                            }
+                        foreach (DataRow row in data.Rows)
+                        {
+                            cbMonth.Items.Add(row["month"]);
                         }
 
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Fail :" + ex.ToString());
+                        // Set SelectedIndex only if items exist
+                        if (cbMonth.Items.Count > 0)
+                        {
+                            cbMonth.SelectedIndex = 0;
+                        }
                     }
                 }
-            
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fail: " + ex.ToString());
+                }
+            }
         }
+
 
         public void LoadAllData()
         {

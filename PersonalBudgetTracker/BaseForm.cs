@@ -13,7 +13,7 @@ namespace PersonalBudgetTracker
     public partial class BaseForm : Form
     {
 
-        public string connectionString = "Data Source=YOSIPAT\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True";
+        public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
 
         public BaseForm()
         {

@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PersonalBudgetTracker
 {
@@ -33,65 +23,47 @@ namespace PersonalBudgetTracker
                 try
                 {
                     connection.Open();
+
+                    // Load data into DataGridView
+                    string query = "SELECT * FROM Wallet";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        {
-                            string query = "Select * from Wallet";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                SqlDataReader reader = command.ExecuteReader();
-                                DataTable data = new DataTable();
-                                data.Load(reader);
+                        SqlDataReader reader = command.ExecuteReader();
+                        DataTable data = new DataTable();
+                        data.Load(reader);
 
-                                dataGridView1.DataSource = data;
-                                dataGridView1.Columns[0].Width = 50;
-                            }
-                        }
-
-                        {
-                            cbType.Items.Clear();
-                            cbType.DropDownStyle = ComboBoxStyle.DropDownList;
-                            string query = "Select DISTINCT wType from Wallet";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                SqlDataReader reader = command.ExecuteReader();
-                                DataTable data = new DataTable();
-                                data.Load(reader);
-
-                                foreach (DataRow row in data.Rows)
-                                {
-                                    cbType.Items.Add(row["wType"]);
-                                }
-                                cbType.SelectedIndex = 0;
-                            }
-                        }
-
-                        {
-                            cbCategory.Items.Clear();
-                            string query = "Select DISTINCT Category from Wallet";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                SqlDataReader reader = command.ExecuteReader();
-                                DataTable data = new DataTable();
-                                data.Load(reader);
-
-                                foreach (DataRow row in data.Rows)
-                                {
-                                    cbCategory.Items.Add(row["Category"]);
-                                }
-                                cbCategory.SelectedIndex = 0;
-                            }
-                        }
-
+                        dataGridView1.DataSource = data;
+                        dataGridView1.Columns[0].Width = 50;
                     }
 
+                    // Load predefined transaction types into cbType
+                    cbType.Items.Clear();
+                    cbType.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cbType.Items.Add("Income");
+                    cbType.Items.Add("Expense");
+                    // No default selection here.
 
+                    // Load distinct categories into cbCategory
+                    cbCategory.Items.Clear();
+                    string categoryQuery = "SELECT DISTINCT Category FROM Wallet";
+                    using (SqlCommand command = new SqlCommand(categoryQuery, connection))
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            cbCategory.Items.Add(reader["Category"].ToString());
+                        }
+                        // Do not set SelectedIndex to 0.
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Fail :" + ex.ToString());
+                    MessageBox.Show("Fail: " + ex.Message);
                 }
             }
         }
+
+
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
