@@ -43,7 +43,10 @@ namespace PersonalBudgetTracker
                 try
                 {
                     connection.Open();
-                    string query = "SELECT DISTINCT DATENAME(month, TransactionDate) AS Month FROM Wallet";
+                    string query = @"
+                SELECT DISTINCT DATENAME(month, TransactionDate) AS Month, MONTH(TransactionDate) AS MonthNumber
+                FROM Wallet
+                ORDER BY MonthNumber";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         SqlDataReader reader = command.ExecuteReader();
@@ -51,11 +54,14 @@ namespace PersonalBudgetTracker
                         {
                             cbMonth.Items.Add(reader["Month"].ToString());
                         }
+                    }
 
-                        if (cbMonth.Items.Count > 0)
-                        {
-                            cbMonth.SelectedIndex = 0;
-                        }
+                    // Add "All" option for aggregating all months
+                    cbMonth.Items.Insert(0, "All");
+
+                    if (cbMonth.Items.Count > 0)
+                    {
+                        cbMonth.SelectedIndex = 0;
                     }
                 }
                 catch (Exception ex)
@@ -64,6 +70,8 @@ namespace PersonalBudgetTracker
                 }
             }
         }
+
+
 
         public void LoadAllData()
         {
@@ -107,21 +115,25 @@ namespace PersonalBudgetTracker
             TotalIncome = 0;
             TotalExpense = 0;
 
-            string filter = "WHERE DATENAME(month, TransactionDate) = @SelectedMonth";
+            string filter = cbMonth.Text == "All" ? "" : "WHERE DATENAME(month, TransactionDate) = @SelectedMonth";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    string query = @"
-                        SELECT c.CategoryType, w.Amount
-                        FROM Wallet w
-                        JOIN Categories c ON w.CategoryID = c.CategoryID
-                        " + filter;
+                    string query = $@"
+                SELECT c.CategoryType, w.Amount
+                FROM Wallet w
+                JOIN Categories c ON w.CategoryID = c.CategoryID
+                {filter}";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@SelectedMonth", cbMonth.Text);
+                        if (cbMonth.Text != "All")
+                        {
+                            command.Parameters.AddWithValue("@SelectedMonth", cbMonth.Text);
+                        }
+
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -147,6 +159,7 @@ namespace PersonalBudgetTracker
                 }
             }
         }
+
 
         private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
