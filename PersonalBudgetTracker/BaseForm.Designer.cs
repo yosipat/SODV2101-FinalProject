@@ -40,7 +40,7 @@
             homePage = new Home();
             walletPage = new Wallet();
             settingPage = new Setting();
-            budgetPage = new Budget();
+            budgetPage = new Category();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -227,6 +227,6 @@
         private Home homePage;
         private Wallet walletPage;
         private Setting settingPage;
-        private Budget budgetPage;
+        private Category budgetPage;
     }
 }

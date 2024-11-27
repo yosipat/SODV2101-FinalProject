@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace PersonalBudgetTracker
 {
-    public partial class Budget : UserControl
+    public partial class Category : UserControl
     {
         public string connectionString { get; set; }
 
-        public Budget()
+        public Category()
         {
             InitializeComponent();
             this.dataGridViewBudget.SelectionChanged += new System.EventHandler(this.dataGridViewBudget_SelectionChanged);

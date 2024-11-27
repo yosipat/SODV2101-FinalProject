@@ -1,6 +1,6 @@
 ﻿namespace PersonalBudgetTracker
 {
-    partial class Budget
+    partial class Category
     {
         /// <summary> 
         /// Required designer variable.
