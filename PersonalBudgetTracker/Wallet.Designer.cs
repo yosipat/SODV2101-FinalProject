@@ -30,6 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
+            cbType = new ComboBox();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
@@ -40,24 +41,28 @@
             label3 = new Label();
             cbCategory = new ComboBox();
             label1 = new Label();
-            cbType = new ComboBox();
             label2 = new Label();
+            lblBalance = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(53, 96);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(592, 418);
+            dataGridView1.Size = new Size(592, 359);
             dataGridView1.TabIndex = 1;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cbType);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(btnAdd);
@@ -68,13 +73,20 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(cbCategory);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(cbType);
             groupBox1.Location = new Point(692, 46);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(399, 468);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add / Modify / Delete";
+            // 
+            // cbType
+            // 
+            cbType.FormattingEnabled = true;
+            cbType.Location = new Point(27, 80);
+            cbType.Name = "cbType";
+            cbType.Size = new Size(352, 33);
+            cbType.TabIndex = 11;
             // 
             // btnDelete
             // 
@@ -141,7 +153,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(27, 135);
+            label3.Location = new Point(27, 131);
             label3.Name = "label3";
             label3.Size = new Size(84, 25);
             label3.TabIndex = 3;
@@ -150,7 +162,7 @@
             // cbCategory
             // 
             cbCategory.FormattingEnabled = true;
-            cbCategory.Location = new Point(27, 163);
+            cbCategory.Location = new Point(27, 159);
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(352, 33);
             cbCategory.TabIndex = 2;
@@ -158,19 +170,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 50);
+            label1.Location = new Point(27, 52);
             label1.Name = "label1";
             label1.Size = new Size(49, 25);
             label1.TabIndex = 1;
             label1.Text = "Type";
-            // 
-            // cbType
-            // 
-            cbType.FormattingEnabled = true;
-            cbType.Location = new Point(27, 78);
-            cbType.Name = "cbType";
-            cbType.Size = new Size(352, 33);
-            cbType.TabIndex = 0;
             // 
             // label2
             // 
@@ -182,10 +186,20 @@
             label2.TabIndex = 16;
             label2.Text = "Wallet";
             // 
+            // lblBalance
+            // 
+            lblBalance.AutoSize = true;
+            lblBalance.Location = new Point(87, 479);
+            lblBalance.Name = "lblBalance";
+            lblBalance.Size = new Size(75, 25);
+            lblBalance.TabIndex = 17;
+            lblBalance.Text = "Balance:";
+            // 
             // Wallet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblBalance);
             Controls.Add(label2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
@@ -204,7 +218,6 @@
         private Label label3;
         private ComboBox cbCategory;
         private Label label1;
-        private ComboBox cbType;
         private Label label2;
         private Button btnDelete;
         private Button btnUpdate;
@@ -213,5 +226,7 @@
         private Label label4;
         private TextBox txtAmount;
         private DateTimePicker dtDate;
+        private ComboBox cbType;
+        private Label lblBalance;
     }
 }

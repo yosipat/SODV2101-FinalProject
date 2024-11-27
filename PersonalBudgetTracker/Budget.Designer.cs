@@ -31,17 +31,17 @@
             label2 = new Label();
             groupBox1 = new GroupBox();
             txtCategory = new TextBox();
-            txtMonth = new TextBox();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
-            label5 = new Label();
             label4 = new Label();
             txtBudgetLimit = new TextBox();
             label3 = new Label();
             label1 = new Label();
             cbType = new ComboBox();
             dataGridViewBudget = new DataGridView();
+            lblTotalIncome = new Label();
+            lblTotalExpense = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBudget).BeginInit();
             SuspendLayout();
@@ -52,18 +52,16 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(51, 51);
             label2.Name = "label2";
-            label2.Size = new Size(93, 32);
+            label2.Size = new Size(114, 32);
             label2.TabIndex = 19;
-            label2.Text = "Budget";
+            label2.Text = "Category";
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(txtCategory);
-            groupBox1.Controls.Add(txtMonth);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(btnAdd);
-            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtBudgetLimit);
             groupBox1.Controls.Add(label3);
@@ -83,13 +81,6 @@
             txtCategory.Size = new Size(352, 31);
             txtCategory.TabIndex = 12;
             // 
-            // txtMonth
-            // 
-            txtMonth.Location = new Point(27, 333);
-            txtMonth.Name = "txtMonth";
-            txtMonth.Size = new Size(352, 31);
-            txtMonth.TabIndex = 11;
-            // 
             // btnDelete
             // 
             btnDelete.Location = new Point(267, 404);
@@ -98,6 +89,7 @@
             btnDelete.TabIndex = 10;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -107,6 +99,7 @@
             btnUpdate.TabIndex = 9;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnAdd
             // 
@@ -116,15 +109,7 @@
             btnAdd.TabIndex = 8;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(27, 305);
-            label5.Name = "label5";
-            label5.Size = new Size(65, 25);
-            label5.TabIndex = 7;
-            label5.Text = "Month";
+            btnAdd.Click += btnAdd_Click;
             // 
             // label4
             // 
@@ -170,17 +155,40 @@
             // 
             // dataGridViewBudget
             // 
+            dataGridViewBudget.AllowUserToAddRows = false;
+            dataGridViewBudget.AllowUserToDeleteRows = false;
             dataGridViewBudget.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBudget.Location = new Point(51, 101);
             dataGridViewBudget.Name = "dataGridViewBudget";
+            dataGridViewBudget.ReadOnly = true;
             dataGridViewBudget.RowHeadersWidth = 62;
-            dataGridViewBudget.Size = new Size(592, 418);
+            dataGridViewBudget.Size = new Size(592, 357);
             dataGridViewBudget.TabIndex = 17;
+            // 
+            // lblTotalIncome
+            // 
+            lblTotalIncome.AutoSize = true;
+            lblTotalIncome.Location = new Point(81, 477);
+            lblTotalIncome.Name = "lblTotalIncome";
+            lblTotalIncome.Size = new Size(157, 25);
+            lblTotalIncome.TabIndex = 21;
+            lblTotalIncome.Text = "Budgeted Income:";
+            // 
+            // lblTotalExpense
+            // 
+            lblTotalExpense.AutoSize = true;
+            lblTotalExpense.Location = new Point(362, 477);
+            lblTotalExpense.Name = "lblTotalExpense";
+            lblTotalExpense.Size = new Size(162, 25);
+            lblTotalExpense.TabIndex = 23;
+            lblTotalExpense.Text = "Budgeted Expense:";
             // 
             // Budget
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblTotalExpense);
+            Controls.Add(lblTotalIncome);
             Controls.Add(label2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridViewBudget);
@@ -200,7 +208,6 @@
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
-        private Label label5;
         private Label label4;
         private TextBox txtBudgetLimit;
         private Label label3;
@@ -208,6 +215,7 @@
         private ComboBox cbType;
         private DataGridView dataGridViewBudget;
         private TextBox txtCategory;
-        private TextBox txtMonth;
+        private Label lblTotalIncome;
+        private Label lblTotalExpense;
     }
 }

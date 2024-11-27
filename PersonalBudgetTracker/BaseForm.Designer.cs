@@ -118,7 +118,7 @@
             btnBudget.Name = "btnBudget";
             btnBudget.Size = new Size(206, 67);
             btnBudget.TabIndex = 1;
-            btnBudget.Text = "♥ Budget";
+            btnBudget.Text = "♥ Category";
             btnBudget.UseVisualStyleBackColor = false;
             btnBudget.Click += btnBudget_Click;
             // 

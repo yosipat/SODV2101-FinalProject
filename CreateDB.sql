@@ -1,9 +1,9 @@
 USE master
 GO
 
-/****** Object:  Database AP     ******/
+/****** Object:  Database AP ******/
 IF DB_ID('BudgetTracker') IS NOT NULL
-	DROP DATABASE BudgetTracker
+    DROP DATABASE BudgetTracker
 GO
 
 CREATE DATABASE BudgetTracker
@@ -12,20 +12,29 @@ GO
 USE BudgetTracker
 GO
 
+-- Categories Table
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY IDENTITY(1,1),  
+    CategoryName VARCHAR(100) NOT NULL,
+    CategoryType VARCHAR(7) CHECK (CategoryType IN ('Income', 'Expense')) 
+);
 
+-- Wallet Table
 CREATE TABLE Wallet (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    Category NVARCHAR(50) NOT NULL,
-    Amount money NOT NULL,
-	wType NVARCHAR(50) NOT NULL,
-	wDate smalldatetime NOT NULL 
+    TransactionID INT PRIMARY KEY IDENTITY(1,1),  
+    Amount DECIMAL(10, 2) NOT NULL,
+    CategoryID INT NOT NULL,
+    TransactionDate DATE NOT NULL,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
+-- Budget Table
 CREATE TABLE Budget (
-    BudgetId INT PRIMARY KEY IDENTITY(1,1),
-    Category NVARCHAR(50) NOT NULL,
-    BudgetLimit money NOT NULL,
-	wType NVARCHAR(50) NOT NULL,
-	wMonth smalldatetime NOT NULL 
+    BudgetID INT PRIMARY KEY IDENTITY(1,1), 
+    CategoryID INT,
+    MonthlyLimit DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
+
+
 
