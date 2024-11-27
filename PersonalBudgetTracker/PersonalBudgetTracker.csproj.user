@@ -16,6 +16,9 @@
     <Compile Update="Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Budget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Setting.cs">
       <SubType>UserControl</SubType>
     </Compile>

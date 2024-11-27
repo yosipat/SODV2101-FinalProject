@@ -224,7 +224,7 @@ namespace PersonalBudgetTracker
             Graphics g = e.Graphics;
             Pen blackPen = new Pen(Color.Black, 1);
 
-            int barWidth = 40;
+            int barWidth = 30;
             int spacing = 10; // space between bar
             int originX = 20; // Starting x position
             int originY = panelBar.Height - 30; // Starting y position
@@ -267,7 +267,7 @@ namespace PersonalBudgetTracker
 
                     // Calculate the height and position
                     float height = (float)((value * 100) / (Math.Abs(max) > Math.Abs(min) ? Math.Abs(max) : Math.Abs(min)));
-                    float x = originX + index * (barWidth + spacing);
+                    float x = originX+20 + index * (barWidth + spacing);
                     float y = height > 0 ? originY - height : originY;
 
                     //MessageBox.Show(height.ToString());
@@ -281,7 +281,7 @@ namespace PersonalBudgetTracker
                     SizeF sizeName = g.MeasureString(name.Substring(0, 3), this.Font);
 
                     // label the bar
-                    g.DrawString(name.Substring(0, 3), this.Font, Brushes.Blue, x + (barWidth - sizeName.Width) / 2, height > 0 ? y + height : y - 30);
+                    g.DrawString(name.Substring(0, 3), this.Font, brush, x + (barWidth - sizeName.Width) / 2, height > 0 ? y + height : y - 30);
                     g.DrawString(value.ToString(), this.Font, brush, x + (barWidth - sizeValue.Width) / 2, height > 0 ? y - 30 : y + Math.Abs(height));
                     index++;
 
@@ -295,7 +295,7 @@ namespace PersonalBudgetTracker
 
 
                 }
-                index++;
+                //index++;
 
             }
         }

@@ -16,7 +16,7 @@ namespace PersonalBudgetTracker
 
         }
 
-        public void runBudget()
+        public void runCategory()
         {
             LoadAllData();
         }

@@ -94,7 +94,6 @@ C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\bin\
 C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Home.resources
 C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.CustomButton.resources
 C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Wallet.resources
-C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Budget.resources
 C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Setting.resources
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\bin\Debug\net8.0-windows\PersonalBudgetTracker.exe
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\bin\Debug\net8.0-windows\PersonalBudgetTracker.deps.json
@@ -171,3 +170,5 @@ C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Applicat
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.genruntimeconfig.cache
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\ref\PersonalBudgetTracker.dll
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Category.resources
+C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Category.resources
+C:\Users\Yosip\Documents\GitHub\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Budget.resources

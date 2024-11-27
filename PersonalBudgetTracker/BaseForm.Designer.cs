@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             lblName = new Label();
             lblUserName = new Label();
             panel1 = new Panel();
+            btnBudget = new CustomButton();
             btnSettings = new CustomButton();
             btnWallet = new CustomButton();
-            btnBudget = new CustomButton();
+            btnCategory = new CustomButton();
             btnHome = new CustomButton();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             homePage = new Home();
             walletPage = new Wallet();
             settingPage = new Setting();
-            budgetPage = new Category();
+            CategoryPage = new Category();
+            budgetPage = new Budget();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -49,46 +52,66 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblName.Location = new Point(196, 47);
+            lblName.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblName.Location = new Point(173, 31);
             lblName.Name = "lblName";
-            lblName.Size = new Size(334, 38);
+            lblName.Size = new Size(385, 45);
             lblName.TabIndex = 0;
             lblName.Text = "Personal Budget Tracker";
             // 
             // lblUserName
             // 
             lblUserName.AutoSize = true;
-            lblUserName.Location = new Point(206, 106);
+            lblUserName.Location = new Point(173, 89);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(57, 25);
+            lblUserName.Size = new Size(95, 25);
             lblUserName.TabIndex = 1;
-            lblUserName.Text = "Hello,";
+            lblUserName.Text = "Hello, user";
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDark;
+            panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.Controls.Add(btnBudget);
             panel1.Controls.Add(btnSettings);
             panel1.Controls.Add(btnWallet);
-            panel1.Controls.Add(btnBudget);
+            panel1.Controls.Add(btnCategory);
             panel1.Controls.Add(btnHome);
             panel1.Location = new Point(0, 155);
             panel1.Name = "panel1";
             panel1.Size = new Size(308, 570);
             panel1.TabIndex = 2;
             // 
+            // btnBudget
+            // 
+            btnBudget.BackColor = Color.White;
+            btnBudget.FlatAppearance.BorderSize = 0;
+            btnBudget.FlatStyle = FlatStyle.Flat;
+            btnBudget.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnBudget.ForeColor = Color.Black;
+            btnBudget.Image = (Image)resources.GetObject("btnBudget.Image");
+            btnBudget.Location = new Point(48, 215);
+            btnBudget.Name = "btnBudget";
+            btnBudget.Size = new Size(206, 67);
+            btnBudget.TabIndex = 4;
+            btnBudget.Text = " Budget";
+            btnBudget.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBudget.UseVisualStyleBackColor = false;
+            btnBudget.Click += btnBudget_Click;
+            // 
             // btnSettings
             // 
             btnSettings.BackColor = Color.White;
             btnSettings.FlatAppearance.BorderSize = 0;
             btnSettings.FlatStyle = FlatStyle.Flat;
-            btnSettings.Font = new Font("Arial", 10F, FontStyle.Bold);
+            btnSettings.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSettings.ForeColor = Color.Black;
-            btnSettings.Location = new Point(48, 309);
+            btnSettings.Image = Properties.Resources.setting;
+            btnSettings.Location = new Point(48, 387);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(206, 67);
             btnSettings.TabIndex = 3;
-            btnSettings.Text = "♥ Settings";
+            btnSettings.Text = " Settings";
+            btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSettings.UseVisualStyleBackColor = false;
             btnSettings.Click += btnSettings_Click;
             // 
@@ -97,58 +120,65 @@
             btnWallet.BackColor = Color.White;
             btnWallet.FlatAppearance.BorderSize = 0;
             btnWallet.FlatStyle = FlatStyle.Flat;
-            btnWallet.Font = new Font("Arial", 10F, FontStyle.Bold);
+            btnWallet.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnWallet.ForeColor = Color.Black;
-            btnWallet.Location = new Point(48, 223);
+            btnWallet.Image = Properties.Resources.wallet;
+            btnWallet.Location = new Point(48, 129);
             btnWallet.Name = "btnWallet";
             btnWallet.Size = new Size(206, 67);
             btnWallet.TabIndex = 2;
-            btnWallet.Text = "♥ Wallet";
+            btnWallet.Text = " Wallet";
+            btnWallet.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnWallet.UseVisualStyleBackColor = false;
             btnWallet.Click += btnWallet_Click;
             // 
-            // btnBudget
+            // btnCategory
             // 
-            btnBudget.BackColor = Color.White;
-            btnBudget.FlatAppearance.BorderSize = 0;
-            btnBudget.FlatStyle = FlatStyle.Flat;
-            btnBudget.Font = new Font("Arial", 10F, FontStyle.Bold);
-            btnBudget.ForeColor = Color.Black;
-            btnBudget.Location = new Point(48, 134);
-            btnBudget.Name = "btnBudget";
-            btnBudget.Size = new Size(206, 67);
-            btnBudget.TabIndex = 1;
-            btnBudget.Text = "♥ Category";
-            btnBudget.UseVisualStyleBackColor = false;
-            btnBudget.Click += btnBudget_Click;
+            btnCategory.BackColor = Color.White;
+            btnCategory.FlatAppearance.BorderSize = 0;
+            btnCategory.FlatStyle = FlatStyle.Flat;
+            btnCategory.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnCategory.ForeColor = Color.Black;
+            btnCategory.Image = Properties.Resources.category;
+            btnCategory.Location = new Point(48, 301);
+            btnCategory.Name = "btnCategory";
+            btnCategory.Size = new Size(206, 67);
+            btnCategory.TabIndex = 1;
+            btnCategory.Text = " Category";
+            btnCategory.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCategory.UseVisualStyleBackColor = false;
+            btnCategory.Click += btnCategory_Click;
             // 
             // btnHome
             // 
             btnHome.BackColor = Color.White;
             btnHome.FlatAppearance.BorderSize = 0;
             btnHome.FlatStyle = FlatStyle.Flat;
-            btnHome.Font = new Font("Arial", 10F, FontStyle.Bold);
+            btnHome.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHome.ForeColor = Color.Black;
+            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
             btnHome.Location = new Point(48, 43);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(206, 67);
             btnHome.TabIndex = 0;
-            btnHome.Text = "♥ Home";
+            btnHome.Text = " Home";
+            btnHome.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.walletImage;
-            pictureBox1.Location = new Point(48, 13);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(48, 31);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(127, 125);
+            pictureBox1.Size = new Size(100, 100);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.Control;
+            panel2.BackColor = SystemColors.GradientActiveCaption;
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(lblName);
             panel2.Controls.Add(lblUserName);
@@ -181,13 +211,20 @@
             settingPage.Size = new Size(1710, 855);
             settingPage.TabIndex = 8;
             // 
+            // CategoryPage
+            // 
+            CategoryPage.connectionString = null;
+            CategoryPage.Location = new Point(310, 155);
+            CategoryPage.Name = "CategoryPage";
+            CategoryPage.Size = new Size(1710, 855);
+            CategoryPage.TabIndex = 9;
+            // 
             // budgetPage
             // 
-            budgetPage.connectionString = null;
             budgetPage.Location = new Point(310, 155);
             budgetPage.Name = "budgetPage";
             budgetPage.Size = new Size(1710, 855);
-            budgetPage.TabIndex = 9;
+            budgetPage.TabIndex = 10;
             // 
             // BaseForm
             // 
@@ -196,6 +233,7 @@
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1452, 726);
             Controls.Add(budgetPage);
+            Controls.Add(CategoryPage);
             Controls.Add(settingPage);
             Controls.Add(walletPage);
             Controls.Add(homePage);
@@ -203,7 +241,7 @@
             Controls.Add(panel1);
             Name = "BaseForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SummaryForm";
+            Text = "Personal Budget Tracker";
             FormClosing += BaseForm_FormClosing;
             Load += BaseForm_Load;
             panel1.ResumeLayout(false);
@@ -221,12 +259,14 @@
         private CustomButton btnHome;
         private CustomButton btnSettings;
         private CustomButton btnWallet;
-        private CustomButton btnBudget;
+        private CustomButton btnCategory;
         private PictureBox pictureBox1;
         private Panel panel2;
         private Home homePage;
         private Wallet walletPage;
         private Setting settingPage;
-        private Category budgetPage;
+        private Category CategoryPage;
+        private Budget budgetPage;
+        private CustomButton btnBudget;
     }
 }

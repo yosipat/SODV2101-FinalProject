@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wallet));
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
             cbType = new ComboBox();
@@ -43,20 +45,33 @@
             label1 = new Label();
             label2 = new Label();
             lblBalance = new Label();
+            pictureBox1 = new PictureBox();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(53, 96);
+            dataGridView1.GridColor = SystemColors.WindowText;
+            dataGridView1.Location = new Point(53, 126);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(592, 359);
+            dataGridView1.Size = new Size(592, 388);
             dataGridView1.TabIndex = 1;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
@@ -179,35 +194,58 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(53, 46);
+            label2.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
+            label2.Location = new Point(53, 57);
             label2.Name = "label2";
-            label2.Size = new Size(83, 32);
+            label2.Size = new Size(97, 38);
             label2.TabIndex = 16;
             label2.Text = "Wallet";
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(87, 479);
+            lblBalance.BackColor = SystemColors.GradientInactiveCaption;
+            lblBalance.Location = new Point(450, 68);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(75, 25);
             lblBalance.TabIndex = 17;
             lblBalance.Text = "Balance:";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.GradientInactiveCaption;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(394, 60);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 21;
+            pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            label8.BackColor = SystemColors.GradientInactiveCaption;
+            label8.Location = new Point(385, 52);
+            label8.Name = "label8";
+            label8.Size = new Size(260, 57);
+            label8.TabIndex = 20;
+            // 
             // Wallet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pictureBox1);
             Controls.Add(lblBalance);
             Controls.Add(label2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
+            Controls.Add(label8);
             Name = "Wallet";
             Size = new Size(1140, 570);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -228,5 +266,7 @@
         private DateTimePicker dtDate;
         private ComboBox cbType;
         private Label lblBalance;
+        private PictureBox pictureBox1;
+        private Label label8;
     }
 }

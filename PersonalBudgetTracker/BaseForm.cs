@@ -13,8 +13,8 @@ namespace PersonalBudgetTracker
     public partial class BaseForm : Form
     {
 
-        public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
-
+        //public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
+        public string connectionString = "Data Source=YOSIPAT\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
         public BaseForm()
         {
 
@@ -22,17 +22,19 @@ namespace PersonalBudgetTracker
 
             homePage.Visible = true;
             walletPage.Visible = false;
-            budgetPage.Visible = false;
+            CategoryPage.Visible = false;
             settingPage.Visible = false;
+            budgetPage.Visible = false;
 
             homePage.connectionString = connectionString;
             homePage.runHomePage();
 
             // Add navigation event handlers to buttons
             btnHome.Click += btnHome_Click;
-            btnBudget.Click += btnBudget_Click;
+            btnCategory.Click += btnCategory_Click;
             btnWallet.Click += btnWallet_Click;
             btnSettings.Click += btnSettings_Click;
+            btnBudget.Click += btnBudget_Click;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -42,21 +44,13 @@ namespace PersonalBudgetTracker
 
             homePage.Visible = true;
             walletPage.Visible = false;
+            CategoryPage.Visible = false;
+            settingPage.Visible = false;
             budgetPage.Visible = false;
-            settingPage.Visible = false;
 
         }
 
-        private void btnBudget_Click(object sender, EventArgs e)
-        {
-            budgetPage.connectionString = connectionString;
-            budgetPage.runBudget();
 
-            homePage.Visible = false;
-            walletPage.Visible = false;
-            budgetPage.Visible = true;
-            settingPage.Visible = false;
-        }
 
         private void btnWallet_Click(object sender, EventArgs e)
         {
@@ -65,8 +59,9 @@ namespace PersonalBudgetTracker
 
             homePage.Visible = false;
             walletPage.Visible = true;
-            budgetPage.Visible = false;
+            CategoryPage.Visible = false;
             settingPage.Visible = false;
+            budgetPage.Visible = false;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -76,8 +71,9 @@ namespace PersonalBudgetTracker
 
             homePage.Visible = false;
             walletPage.Visible = false;
-            budgetPage.Visible = false;
+            CategoryPage.Visible = false;
             settingPage.Visible = true;
+            budgetPage.Visible = false;
         }
 
         private void BaseForm_Load(object sender, EventArgs e)
@@ -88,6 +84,30 @@ namespace PersonalBudgetTracker
         private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            CategoryPage.connectionString = connectionString;
+            CategoryPage.runCategory();
+
+            homePage.Visible = false;
+            walletPage.Visible = false;
+            CategoryPage.Visible = true;
+            settingPage.Visible = false;
+            budgetPage.Visible = false;
+        }
+
+        private void btnBudget_Click(object sender, EventArgs e)
+        {
+            budgetPage.connectionString = connectionString;
+            budgetPage.runBudget();
+
+            homePage.Visible = false;
+            walletPage.Visible = false;
+            CategoryPage.Visible =false;
+            settingPage.Visible = false;
+            budgetPage.Visible = true;
         }
     }
 }

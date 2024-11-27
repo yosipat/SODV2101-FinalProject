@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Category));
             label2 = new Label();
             groupBox1 = new GroupBox();
             txtCategory = new TextBox();
@@ -42,17 +43,22 @@
             dataGridViewBudget = new DataGridView();
             lblTotalIncome = new Label();
             lblTotalExpense = new Label();
+            pictureBox1 = new PictureBox();
+            label8 = new Label();
+            pictureBox2 = new PictureBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBudget).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             label2.Location = new Point(51, 51);
             label2.Name = "label2";
-            label2.Size = new Size(114, 32);
+            label2.Size = new Size(133, 38);
             label2.TabIndex = 19;
             label2.Text = "Category";
             // 
@@ -157,18 +163,20 @@
             // 
             dataGridViewBudget.AllowUserToAddRows = false;
             dataGridViewBudget.AllowUserToDeleteRows = false;
+            dataGridViewBudget.BackgroundColor = SystemColors.Window;
             dataGridViewBudget.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBudget.Location = new Point(51, 101);
             dataGridViewBudget.Name = "dataGridViewBudget";
             dataGridViewBudget.ReadOnly = true;
             dataGridViewBudget.RowHeadersWidth = 62;
-            dataGridViewBudget.Size = new Size(592, 357);
+            dataGridViewBudget.Size = new Size(592, 340);
             dataGridViewBudget.TabIndex = 17;
             // 
             // lblTotalIncome
             // 
             lblTotalIncome.AutoSize = true;
-            lblTotalIncome.Location = new Point(81, 477);
+            lblTotalIncome.BackColor = SystemColors.GradientInactiveCaption;
+            lblTotalIncome.Location = new Point(97, 473);
             lblTotalIncome.Name = "lblTotalIncome";
             lblTotalIncome.Size = new Size(157, 25);
             lblTotalIncome.TabIndex = 21;
@@ -177,26 +185,62 @@
             // lblTotalExpense
             // 
             lblTotalExpense.AutoSize = true;
-            lblTotalExpense.Location = new Point(362, 477);
+            lblTotalExpense.BackColor = SystemColors.GradientInactiveCaption;
+            lblTotalExpense.Location = new Point(367, 473);
             lblTotalExpense.Name = "lblTotalExpense";
             lblTotalExpense.Size = new Size(162, 25);
             lblTotalExpense.TabIndex = 23;
             lblTotalExpense.Text = "Budgeted Expense:";
             // 
-            // Budget
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.GradientInactiveCaption;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(59, 468);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(35, 35);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 25;
+            pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            label8.BackColor = SystemColors.GradientInactiveCaption;
+            label8.Location = new Point(51, 452);
+            label8.Name = "label8";
+            label8.Size = new Size(592, 67);
+            label8.TabIndex = 24;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = SystemColors.GradientInactiveCaption;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(329, 468);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(35, 35);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 26;
+            pictureBox2.TabStop = false;
+            // 
+            // Category
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
             Controls.Add(lblTotalExpense);
             Controls.Add(lblTotalIncome);
             Controls.Add(label2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridViewBudget);
-            Name = "Budget";
+            Controls.Add(label8);
+            Name = "Category";
             Size = new Size(1140, 570);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBudget).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -217,5 +261,8 @@
         private TextBox txtCategory;
         private Label lblTotalIncome;
         private Label lblTotalExpense;
+        private PictureBox pictureBox1;
+        private Label label8;
+        private PictureBox pictureBox2;
     }
 }
