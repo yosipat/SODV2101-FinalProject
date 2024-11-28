@@ -14,7 +14,15 @@ namespace PersonalBudgetTracker
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            BaseForm baseform = new BaseForm();
+            string userName = txtName.Text; // Retrieve the value from txtName
+
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                MessageBox.Show("Please enter your name.");
+                return;
+            }
+
+            BaseForm baseform = new BaseForm(userName);
             baseform.Show();
             this.Hide();
         }

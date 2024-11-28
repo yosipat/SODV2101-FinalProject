@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PersonalBudgetTracker
 {
@@ -15,10 +16,13 @@ namespace PersonalBudgetTracker
 
         //public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
         public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
-        public BaseForm()
+        public BaseForm(string userName)
         {
 
             InitializeComponent();
+
+            // Display the name on lblUserName
+            lblUserName.Text = $"Hi, {userName}!";
 
             homePage.Visible = true;
             walletPage.Visible = false;

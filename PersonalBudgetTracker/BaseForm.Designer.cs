@@ -62,9 +62,9 @@
             lblUserName.AutoSize = true;
             lblUserName.Location = new Point(173, 89);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(95, 25);
+            lblUserName.Size = new Size(97, 25);
             lblUserName.TabIndex = 1;
-            lblUserName.Text = "Hello, user";
+            lblUserName.Text = "Hello, User";
             // 
             // panel1
             // 

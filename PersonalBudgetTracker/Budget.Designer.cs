@@ -50,6 +50,7 @@
             lblControl = new Label();
             lblRemainingBudget = new Label();
             pictureBox3 = new PictureBox();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -213,7 +214,7 @@
             // 
             pictureBox1.BackColor = SystemColors.GradientInactiveCaption;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(326, 464);
+            pictureBox1.Location = new Point(328, 57);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(35, 35);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -252,7 +253,7 @@
             // 
             lblRemainingBudget.AutoSize = true;
             lblRemainingBudget.BackColor = SystemColors.GradientInactiveCaption;
-            lblRemainingBudget.Location = new Point(367, 464);
+            lblRemainingBudget.Location = new Point(369, 57);
             lblRemainingBudget.Name = "lblRemainingBudget";
             lblRemainingBudget.Size = new Size(161, 25);
             lblRemainingBudget.TabIndex = 32;
@@ -269,6 +270,14 @@
             pictureBox3.TabIndex = 33;
             pictureBox3.TabStop = false;
             // 
+            // label8
+            // 
+            label8.BackColor = SystemColors.GradientInactiveCaption;
+            label8.Location = new Point(305, 46);
+            label8.Name = "label8";
+            label8.Size = new Size(340, 57);
+            label8.TabIndex = 34;
+            // 
             // Budget
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -283,6 +292,7 @@
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
+            Controls.Add(label8);
             Name = "Budget";
             Size = new Size(1140, 570);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -317,5 +327,6 @@
         private Label lblControl;
         private Label lblRemainingBudget;
         private PictureBox pictureBox3;
+        private Label label8;
     }
 }

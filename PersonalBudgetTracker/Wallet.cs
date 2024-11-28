@@ -366,8 +366,8 @@ namespace PersonalBudgetTracker
         private void ExportDataGridViewToCSV(DataGridView dgv)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";  
-            saveFileDialog.FileName = "WalletData.csv";  
+            saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            saveFileDialog.FileName = "WalletData.csv";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -384,20 +384,20 @@ namespace PersonalBudgetTracker
                                 sb.Append(column.HeaderText + ",");
                             }
                         }
-                        sb.AppendLine();  
+                        sb.AppendLine();
 
                         foreach (DataGridViewRow row in dgv.Rows)
                         {
-                            if (row.IsNewRow) continue;  
+                            if (row.IsNewRow) continue;
 
                             foreach (DataGridViewCell cell in row.Cells)
                             {
-                                if (cell.Visible)  
+                                if (cell.Visible)
                                 {
-                                    sb.Append(cell.Value?.ToString().Replace(",", ";") + ",");  
+                                    sb.Append(cell.Value?.ToString().Replace(",", ";") + ",");
                                 }
                             }
-                            sb.AppendLine();  
+                            sb.AppendLine();
                         }
 
                         writer.Write(sb.ToString());
@@ -407,7 +407,7 @@ namespace PersonalBudgetTracker
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error exporting data: " + ex.Message);  
+                    MessageBox.Show("Error exporting data: " + ex.Message);
                 }
             }
         }
@@ -442,6 +442,11 @@ namespace PersonalBudgetTracker
         private void btnExport_Click(object sender, EventArgs e)
         {
             ExportDataGridViewToCSV(dataGridView1);
+        }
+
+        private void lblBalance_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -46,8 +46,8 @@
             label2 = new Label();
             lblBalance = new Label();
             pictureBox1 = new PictureBox();
-            label8 = new Label();
             btnExport = new Button();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -206,7 +206,7 @@
             // 
             lblBalance.AutoSize = true;
             lblBalance.BackColor = SystemColors.GradientInactiveCaption;
-            lblBalance.Location = new Point(450, 68);
+            lblBalance.Location = new Point(392, 68);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(75, 25);
             lblBalance.TabIndex = 17;
@@ -216,20 +216,12 @@
             // 
             pictureBox1.BackColor = SystemColors.GradientInactiveCaption;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(394, 60);
+            pictureBox1.Location = new Point(336, 60);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(40, 40);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 21;
             pictureBox1.TabStop = false;
-            // 
-            // label8
-            // 
-            label8.BackColor = SystemColors.GradientInactiveCaption;
-            label8.Location = new Point(385, 52);
-            label8.Name = "label8";
-            label8.Size = new Size(260, 57);
-            label8.TabIndex = 20;
             // 
             // btnExport
             // 
@@ -241,6 +233,14 @@
             btnExport.Text = "Export";
             btnExport.UseVisualStyleBackColor = false;
             btnExport.Click += btnExport_Click;
+            // 
+            // label8
+            // 
+            label8.BackColor = SystemColors.GradientInactiveCaption;
+            label8.Location = new Point(305, 52);
+            label8.Name = "label8";
+            label8.Size = new Size(340, 57);
+            label8.TabIndex = 20;
             // 
             // Wallet
             // 
@@ -280,7 +280,7 @@
         private ComboBox cbType;
         private Label lblBalance;
         private PictureBox pictureBox1;
-        private Label label8;
         private Button btnExport;
+        private Label label8;
     }
 }
