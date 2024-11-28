@@ -19,9 +19,6 @@
     <Compile Update="Budget.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Setting.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Wallet.cs">
       <SubType>UserControl</SubType>
     </Compile>

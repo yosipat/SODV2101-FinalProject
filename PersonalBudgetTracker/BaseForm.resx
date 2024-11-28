@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,7 +121,7 @@
   <data name="btnBudget.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAABGZJREFUSEull0tsG1UUhqMiFsAeVCmLeDwz1/bEjp3xK3Hi2KYNL9ENTYtoRENa
+        EAAACxABrSO9dQAABGZJREFUSEull0tsG1UUhqMiFsAeVCmLeDwz1/bEjp3xK3Hi2KYNL9ENTYtoRENa
         OUAKVRGqoKVCStompRWkDS/RAi0IURBIIFQB4lHEAiQ2LBrEBokFiKosSNjwaLEv579zPLXwdWKbI/3K
         +J5zvnPfM+laywwjfLthiCXSFcMIfR4I2DF2+Ua+KHxejPgOOezqzILBsEPAy8FgSFrhpMRf+g34KfJt
         hej5JNr+E3PZsqwwY9o3gj4BkDu+KIsn/pHJHWekKRIKXi+0pXa8JouLFdl/z3FuF/sZ075R8j5A3IlT

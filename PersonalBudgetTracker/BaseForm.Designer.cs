@@ -33,7 +33,6 @@
             lblUserName = new Label();
             panel1 = new Panel();
             btnBudget = new CustomButton();
-            btnSettings = new CustomButton();
             btnWallet = new CustomButton();
             btnCategory = new CustomButton();
             btnHome = new CustomButton();
@@ -41,7 +40,6 @@
             panel2 = new Panel();
             homePage = new Home();
             walletPage = new Wallet();
-            settingPage = new Setting();
             CategoryPage = new Category();
             budgetPage = new Budget();
             panel1.SuspendLayout();
@@ -72,7 +70,6 @@
             // 
             panel1.BackColor = SystemColors.GradientInactiveCaption;
             panel1.Controls.Add(btnBudget);
-            panel1.Controls.Add(btnSettings);
             panel1.Controls.Add(btnWallet);
             panel1.Controls.Add(btnCategory);
             panel1.Controls.Add(btnHome);
@@ -97,23 +94,6 @@
             btnBudget.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBudget.UseVisualStyleBackColor = false;
             btnBudget.Click += btnBudget_Click;
-            // 
-            // btnSettings
-            // 
-            btnSettings.BackColor = Color.White;
-            btnSettings.FlatAppearance.BorderSize = 0;
-            btnSettings.FlatStyle = FlatStyle.Flat;
-            btnSettings.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnSettings.ForeColor = Color.Black;
-            btnSettings.Image = Properties.Resources.setting;
-            btnSettings.Location = new Point(48, 387);
-            btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(206, 67);
-            btnSettings.TabIndex = 3;
-            btnSettings.Text = " Settings";
-            btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSettings.UseVisualStyleBackColor = false;
-            btnSettings.Click += btnSettings_Click;
             // 
             // btnWallet
             // 
@@ -203,14 +183,6 @@
             walletPage.Size = new Size(1710, 855);
             walletPage.TabIndex = 7;
             // 
-            // settingPage
-            // 
-            settingPage.connectionString = null;
-            settingPage.Location = new Point(310, 155);
-            settingPage.Name = "settingPage";
-            settingPage.Size = new Size(1710, 855);
-            settingPage.TabIndex = 8;
-            // 
             // CategoryPage
             // 
             CategoryPage.connectionString = null;
@@ -221,6 +193,7 @@
             // 
             // budgetPage
             // 
+            budgetPage.connectionString = null;
             budgetPage.Location = new Point(310, 155);
             budgetPage.Name = "budgetPage";
             budgetPage.Size = new Size(1710, 855);
@@ -234,7 +207,6 @@
             ClientSize = new Size(1452, 726);
             Controls.Add(budgetPage);
             Controls.Add(CategoryPage);
-            Controls.Add(settingPage);
             Controls.Add(walletPage);
             Controls.Add(homePage);
             Controls.Add(panel2);
@@ -257,14 +229,12 @@
         private Label lblUserName;
         private Panel panel1;
         private CustomButton btnHome;
-        private CustomButton btnSettings;
         private CustomButton btnWallet;
         private CustomButton btnCategory;
         private PictureBox pictureBox1;
         private Panel panel2;
         private Home homePage;
         private Wallet walletPage;
-        private Setting settingPage;
         private Category CategoryPage;
         private Budget budgetPage;
         private CustomButton btnBudget;

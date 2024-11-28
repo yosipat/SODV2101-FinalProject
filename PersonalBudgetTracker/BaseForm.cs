@@ -23,7 +23,6 @@ namespace PersonalBudgetTracker
             homePage.Visible = true;
             walletPage.Visible = false;
             CategoryPage.Visible = false;
-            settingPage.Visible = false;
             budgetPage.Visible = false;
 
             homePage.connectionString = connectionString;
@@ -33,7 +32,6 @@ namespace PersonalBudgetTracker
             btnHome.Click += btnHome_Click;
             btnCategory.Click += btnCategory_Click;
             btnWallet.Click += btnWallet_Click;
-            btnSettings.Click += btnSettings_Click;
             btnBudget.Click += btnBudget_Click;
         }
 
@@ -45,7 +43,6 @@ namespace PersonalBudgetTracker
             homePage.Visible = true;
             walletPage.Visible = false;
             CategoryPage.Visible = false;
-            settingPage.Visible = false;
             budgetPage.Visible = false;
 
         }
@@ -60,19 +57,6 @@ namespace PersonalBudgetTracker
             homePage.Visible = false;
             walletPage.Visible = true;
             CategoryPage.Visible = false;
-            settingPage.Visible = false;
-            budgetPage.Visible = false;
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            settingPage.connectionString = connectionString;
-            settingPage.runSetting();
-
-            homePage.Visible = false;
-            walletPage.Visible = false;
-            CategoryPage.Visible = false;
-            settingPage.Visible = true;
             budgetPage.Visible = false;
         }
 
@@ -94,7 +78,6 @@ namespace PersonalBudgetTracker
             homePage.Visible = false;
             walletPage.Visible = false;
             CategoryPage.Visible = true;
-            settingPage.Visible = false;
             budgetPage.Visible = false;
         }
 
@@ -106,7 +89,6 @@ namespace PersonalBudgetTracker
             homePage.Visible = false;
             walletPage.Visible = false;
             CategoryPage.Visible =false;
-            settingPage.Visible = false;
             budgetPage.Visible = true;
         }
     }

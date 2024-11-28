@@ -155,7 +155,6 @@ C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Applicat
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Form1.resources
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Home.resources
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Properties.Resources.resources
-C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Setting.resources
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Wallet.resources
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.csproj.GenerateResource.cache
 C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.GeneratedMSBuildEditorConfig.editorconfig
