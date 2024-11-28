@@ -36,7 +36,6 @@ CREATE TABLE Budget (
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
-
 USE BudgetTracker
 GO
 
@@ -83,20 +82,79 @@ VALUES
     (270.00, 5, '2024-04-20'), -- Entertainment
     (130.00, 6, '2024-04-25'), -- Transportation
 
-    -- May to October 2024
+    -- May 2024
     (3400.00, 1, '2024-05-05'), -- Salary
-    (350.00, 4, '2024-06-15'), -- Utilities
-    (500.00, 7, '2024-07-20'), -- Healthcare
-    (1200.00, 8, '2024-08-10'), -- Savings
-    (750.00, 3, '2024-09-25'), -- Groceries
-    (850.00, 6, '2024-10-05'); -- Transportation
+    (550.00, 3, '2024-05-10'), -- Groceries
+    (120.00, 4, '2024-05-15'), -- Utilities
+    (200.00, 5, '2024-05-20'), -- Entertainment
+    (100.00, 6, '2024-05-25'), -- Transportation
 
--- Insert sample budgets
+    -- June 2024
+    (3400.00, 1, '2024-06-05'), -- Salary
+    (600.00, 3, '2024-06-10'), -- Groceries
+    (350.00, 4, '2024-06-15'), -- Utilities
+    (250.00, 5, '2024-06-20'), -- Entertainment
+    (120.00, 6, '2024-06-25'), -- Transportation
+
+    -- July 2024
+    (3500.00, 1, '2024-07-05'), -- Salary
+    (400.00, 3, '2024-07-10'), -- Groceries
+    (100.00, 4, '2024-07-15'), -- Utilities
+    (180.00, 5, '2024-07-20'), -- Entertainment
+    (130.00, 6, '2024-07-25'), -- Transportation
+
+    -- August 2024
+    (3500.00, 1, '2024-08-05'), -- Salary
+    (450.00, 3, '2024-08-10'), -- Groceries
+    (130.00, 4, '2024-08-15'), -- Utilities
+    (300.00, 5, '2024-08-20'), -- Entertainment
+    (150.00, 6, '2024-08-25'), -- Transportation
+
+    -- September 2024
+    (3600.00, 1, '2024-09-05'), -- Salary
+    (500.00, 3, '2024-09-10'), -- Groceries
+    (100.00, 4, '2024-09-15'), -- Utilities
+    (250.00, 5, '2024-09-20'), -- Entertainment
+    (130.00, 6, '2024-09-25'), -- Transportation
+
+    -- October 2024
+    (3600.00, 1, '2024-10-05'), -- Salary
+    (550.00, 3, '2024-10-10'), -- Groceries
+    (120.00, 4, '2024-10-15'), -- Utilities
+    (180.00, 5, '2024-10-20'), -- Entertainment
+    (150.00, 6, '2024-10-25'), -- Transportation
+
+    -- Adding new income categories for each month to simulate Freelance and Savings
+    (1000.00, 2, '2024-01-10'), -- Freelance
+    (1000.00, 2, '2024-02-10'), -- Freelance
+    (1000.00, 2, '2024-03-10'), -- Freelance
+    (1000.00, 2, '2024-04-10'), -- Freelance
+    (1000.00, 2, '2024-05-10'), -- Freelance
+    (1000.00, 2, '2024-06-10'), -- Freelance
+    (1000.00, 2, '2024-07-10'), -- Freelance
+    (1000.00, 2, '2024-08-10'), -- Freelance
+    (1000.00, 2, '2024-09-10'), -- Freelance
+    (1000.00, 2, '2024-10-10'), -- Freelance
+
+    -- Savings income
+    (1200.00, 8, '2024-01-10'), -- Savings
+    (1200.00, 8, '2024-02-10'), -- Savings
+    (1200.00, 8, '2024-03-10'), -- Savings
+    (1200.00, 8, '2024-04-10'), -- Savings
+    (1200.00, 8, '2024-05-10'), -- Savings
+    (1200.00, 8, '2024-06-10'), -- Savings
+    (1200.00, 8, '2024-07-10'), -- Savings
+    (1200.00, 8, '2024-08-10'), -- Savings
+    (1200.00, 8, '2024-09-10'), -- Savings
+    (1200.00, 8, '2024-10-10'); -- Savings
+
+-- Insert sample budgets (with limits for both income and expenses)
 INSERT INTO Budget (CategoryID, MonthlyLimit)
 VALUES
     (3, 600.00),  -- Groceries
     (4, 200.00),  -- Utilities
     (5, 250.00),  -- Entertainment
     (6, 150.00),  -- Transportation
-    (7, 300.00);  -- Healthcare
-
+    (7, 300.00),  -- Healthcare
+    (2, 1000.00), -- Freelance Income
+    (8, 1200.00); -- Savings
