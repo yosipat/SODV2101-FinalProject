@@ -51,28 +51,38 @@ namespace PersonalBudgetTracker
 
         private void LoadCategories()
         {
+            // Clear existing items from the combo boxes
             cbCategory.Items.Clear();
             cbFilterCategory.Items.Clear();
-            cbFilterCategory.Items.Add("All");  // Add "All" option to the dropdown
+
+            // Add "All" option to the filter category dropdown
+            cbFilterCategory.Items.Add("All");
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    // Load distinct category names instead of category types
-                    string query = "SELECT DISTINCT CategoryName FROM Categories"; // Load distinct category names
+                    // Load distinct category names from the Categories table
+                    string query = "SELECT DISTINCT CategoryName FROM Categories";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            cbFilterCategory.Items.Add(reader["CategoryName"].ToString());
+                            string categoryName = reader["CategoryName"].ToString();
+                            // Add category names to both combo boxes
+                            cbCategory.Items.Add(categoryName);
+                            cbFilterCategory.Items.Add(categoryName);
                         }
 
-                        if (cbFilterCategory.Items.Count > 0)
+                        // Set default selection for cbFilterCategory to "All"
+                        cbFilterCategory.SelectedIndex = 0;
+
+                        // If categories were loaded, select the first item in cbCategory by default
+                        if (cbCategory.Items.Count > 0)
                         {
-                            cbFilterCategory.SelectedIndex = 0; // Select the first item by default
+                            cbCategory.SelectedIndex = 0;
                         }
                     }
                 }
@@ -82,6 +92,7 @@ namespace PersonalBudgetTracker
                 }
             }
         }
+
 
         private void LoadBudgetData(string selectedMonth = null, string selectedCategory = null)
         {
