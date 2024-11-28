@@ -151,6 +151,7 @@ VALUES
 -- Insert sample budgets (with limits for both income and expenses)
 INSERT INTO Budget (CategoryID, MonthlyLimit)
 VALUES
+    (1, 4000.00), -- Salary
     (3, 600.00),  -- Groceries
     (4, 200.00),  -- Utilities
     (5, 250.00),  -- Entertainment
@@ -158,3 +159,4 @@ VALUES
     (7, 300.00),  -- Healthcare
     (2, 1000.00), -- Freelance Income
     (8, 1200.00); -- Savings
+

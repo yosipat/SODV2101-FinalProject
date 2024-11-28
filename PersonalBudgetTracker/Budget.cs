@@ -95,7 +95,10 @@ namespace PersonalBudgetTracker
                     c.CategoryType AS [Type], 
                     b.MonthlyLimit AS [Budget], 
                     ISNULL(SUM(w.Amount), 0) AS [Wallet], 
-                    (b.MonthlyLimit - ISNULL(SUM(w.Amount), 0)) AS [Net]
+                    CASE 
+                        WHEN c.CategoryType = 'Expense' THEN (b.MonthlyLimit - ISNULL(SUM(w.Amount), 0)) 
+                        ELSE (ISNULL(SUM(w.Amount), 0) - b.MonthlyLimit) 
+                    END AS [Net]  -- Net for income will be negative
                 FROM Categories c
                 LEFT JOIN Budget b ON c.CategoryID = b.CategoryID
                 LEFT JOIN Wallet w ON c.CategoryID = w.CategoryID";
@@ -139,6 +142,7 @@ namespace PersonalBudgetTracker
             }
         }
 
+
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -161,7 +165,6 @@ namespace PersonalBudgetTracker
         }
 
 
-
         private void LoadBalanceOverview()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -170,44 +173,35 @@ namespace PersonalBudgetTracker
                 {
                     connection.Open();
 
+                    // Updated query to sum the remaining balances
                     string query = @"
-                SELECT 
-                    -- Total monthly limit for income categories
-                    (SELECT ISNULL(SUM(MonthlyLimit), 0) FROM Budget b
-                     JOIN Categories c ON b.CategoryID = c.CategoryID
-                     WHERE c.CategoryType = 'Income') AS BudgetedIncome,
-                     
-                    -- Total monthly limit for expense categories
-                    (SELECT ISNULL(SUM(MonthlyLimit), 0) FROM Budget b
-                     JOIN Categories c ON b.CategoryID = c.CategoryID
-                     WHERE c.CategoryType = 'Expense') AS BudgetedExpense,
-                     
-                    -- Total wallet amount for income categories
-                    (SELECT ISNULL(SUM(w.Amount), 0) FROM Wallet w
-                     JOIN Categories c ON w.CategoryID = c.CategoryID
-                     WHERE c.CategoryType = 'Income') AS TotalIncome,
-                     
-                    -- Total wallet amount for expense categories
-                    (SELECT ISNULL(SUM(w.Amount), 0) FROM Wallet w
-                     JOIN Categories c ON w.CategoryID = c.CategoryID
-                     WHERE c.CategoryType = 'Expense') AS TotalExpense";
+                SELECT SUM(
+                        CASE 
+                            WHEN c.CategoryType = 'Income' THEN (w.Amount - b.MonthlyLimit)
+                            WHEN c.CategoryType = 'Expense' THEN (b.MonthlyLimit - w.Amount)
+                            ELSE 0
+                        END
+                    ) AS TotalRemainingBalance
+                FROM Wallet w
+                JOIN Categories c ON w.CategoryID = c.CategoryID
+                JOIN Budget b ON c.CategoryID = b.CategoryID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         SqlDataReader reader = command.ExecuteReader();
-                        if (reader.Read())
+                        decimal totalRemainingBalance = 0m;
+
+                        while (reader.Read())
                         {
-                            decimal budgetedIncome = Convert.ToDecimal(reader["BudgetedIncome"]);
-                            decimal budgetedExpense = Convert.ToDecimal(reader["BudgetedExpense"]);
-                            decimal totalIncome = Convert.ToDecimal(reader["TotalIncome"]);
-                            decimal totalExpense = Convert.ToDecimal(reader["TotalExpense"]);
-
-                            // Calculate Remaining Budget
-                            decimal remainingBudget = (budgetedIncome - totalIncome) - (budgetedExpense - totalExpense);
-
-                            // Update the lblRemainingBudget with the calculated value
-                            lblRemainingBudget.Text = $"Remaining Budget: ${remainingBudget:F2}";
+                            // Sum up the remaining balance from the query result
+                            if (reader["TotalRemainingBalance"] != DBNull.Value)
+                            {
+                                totalRemainingBalance += Convert.ToDecimal(reader["TotalRemainingBalance"]);
+                            }
                         }
+
+                        // Update the lblRemainingBudget label with the total remaining balance
+                        lblRemainingBudget.Text = $"Remaining Budget: ${totalRemainingBalance:F2}";
                     }
                 }
                 catch (Exception ex)
