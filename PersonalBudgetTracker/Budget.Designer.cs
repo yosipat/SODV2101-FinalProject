@@ -29,13 +29,12 @@ namespace PersonalBudgetTracker
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Budget));
             label1 = new Label();
             dataGridView1 = new DataGridView();
             cbCategory = new ComboBox();
             groupBox1 = new GroupBox();
-            label2 = new Label();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
@@ -48,6 +47,8 @@ namespace PersonalBudgetTracker
             lblRemainingBudget = new Label();
             label8 = new Label();
             btnExport = new Button();
+            cbFilterCategory = new ComboBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -73,14 +74,14 @@ namespace PersonalBudgetTracker
             dataGridView1.Location = new Point(53, 119);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(592, 370);
             dataGridView1.TabIndex = 2;
@@ -96,14 +97,15 @@ namespace PersonalBudgetTracker
             // groupBox1
             // 
             groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(cbFilterCategory);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(txtBudgetLimit);
             groupBox1.Controls.Add(lblBudgetLimit);
-            groupBox1.Controls.Add(cbFilterMonth);
             groupBox1.Controls.Add(btnFilter);
             groupBox1.Controls.Add(lblCategory);
+            groupBox1.Controls.Add(cbFilterMonth);
             groupBox1.Controls.Add(cbCategory);
             groupBox1.Location = new Point(692, 46);
             groupBox1.Name = "groupBox1";
@@ -111,15 +113,6 @@ namespace PersonalBudgetTracker
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Manage Budget";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(27, 316);
-            label2.Name = "label2";
-            label2.Size = new Size(133, 25);
-            label2.TabIndex = 14;
-            label2.Text = "Filter by Month";
             // 
             // btnDelete
             // 
@@ -170,9 +163,9 @@ namespace PersonalBudgetTracker
             // cbFilterMonth
             // 
             cbFilterMonth.FormattingEnabled = true;
-            cbFilterMonth.Location = new Point(27, 360);
+            cbFilterMonth.Location = new Point(27, 357);
             cbFilterMonth.Name = "cbFilterMonth";
-            cbFilterMonth.Size = new Size(352, 33);
+            cbFilterMonth.Size = new Size(178, 33);
             cbFilterMonth.TabIndex = 6;
             // 
             // btnFilter
@@ -198,7 +191,7 @@ namespace PersonalBudgetTracker
             // 
             pictureBox1.BackColor = SystemColors.GradientInactiveCaption;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(328, 57);
+            pictureBox1.Location = new Point(407, 57);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(35, 35);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -209,7 +202,7 @@ namespace PersonalBudgetTracker
             // 
             lblRemainingBudget.AutoSize = true;
             lblRemainingBudget.BackColor = SystemColors.GradientInactiveCaption;
-            lblRemainingBudget.Location = new Point(369, 61);
+            lblRemainingBudget.Location = new Point(448, 61);
             lblRemainingBudget.Name = "lblRemainingBudget";
             lblRemainingBudget.Size = new Size(161, 25);
             lblRemainingBudget.TabIndex = 32;
@@ -218,9 +211,9 @@ namespace PersonalBudgetTracker
             // label8
             // 
             label8.BackColor = SystemColors.GradientInactiveCaption;
-            label8.Location = new Point(305, 46);
+            label8.Location = new Point(385, 46);
             label8.Name = "label8";
-            label8.Size = new Size(340, 57);
+            label8.Size = new Size(260, 57);
             label8.TabIndex = 34;
             // 
             // btnExport
@@ -232,6 +225,23 @@ namespace PersonalBudgetTracker
             btnExport.Text = "Export";
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Click += btnExport_Click;
+            // 
+            // cbFilterCategory
+            // 
+            cbFilterCategory.FormattingEnabled = true;
+            cbFilterCategory.Location = new Point(211, 357);
+            cbFilterCategory.Name = "cbFilterCategory";
+            cbFilterCategory.Size = new Size(168, 33);
+            cbFilterCategory.TabIndex = 15;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(27, 319);
+            label2.Name = "label2";
+            label2.Size = new Size(50, 25);
+            label2.TabIndex = 16;
+            label2.Text = "Filter";
             // 
             // Budget
             // 
@@ -284,10 +294,11 @@ namespace PersonalBudgetTracker
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
-        private Label label2;
         private PictureBox pictureBox1;
         private Label lblRemainingBudget;
         private Label label8;
         private Button btnExport;
+        private ComboBox cbFilterCategory;
+        private Label label2;
     }
 }

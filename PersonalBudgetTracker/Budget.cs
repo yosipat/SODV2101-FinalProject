@@ -52,24 +52,27 @@ namespace PersonalBudgetTracker
         private void LoadCategories()
         {
             cbCategory.Items.Clear();
+            cbFilterCategory.Items.Clear();
+            cbFilterCategory.Items.Add("All");  // Add "All" option to the dropdown
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    // Load both Income and Expense categories
-                    string query = "SELECT CategoryName FROM Categories";
+                    // Load distinct category names instead of category types
+                    string query = "SELECT DISTINCT CategoryName FROM Categories"; // Load distinct category names
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            cbCategory.Items.Add(reader["CategoryName"].ToString());
+                            cbFilterCategory.Items.Add(reader["CategoryName"].ToString());
                         }
 
-                        if (cbCategory.Items.Count > 0)
+                        if (cbFilterCategory.Items.Count > 0)
                         {
-                            cbCategory.SelectedIndex = 0; // Select the first item by default
+                            cbFilterCategory.SelectedIndex = 0; // Select the first item by default
                         }
                     }
                 }
@@ -80,8 +83,7 @@ namespace PersonalBudgetTracker
             }
         }
 
-
-        private void LoadBudgetData(string selectedMonth = null)
+        private void LoadBudgetData(string selectedMonth = null, string selectedCategory = null)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -89,41 +91,52 @@ namespace PersonalBudgetTracker
                 {
                     connection.Open();
                     string query = @"
-                SELECT 
-                    FORMAT(w.TransactionDate, 'MMM-yyyy') AS [Date],
-                    c.CategoryName AS [Category], 
-                    c.CategoryType AS [Type], 
-                    b.MonthlyLimit AS [Budget], 
-                    ISNULL(SUM(w.Amount), 0) AS [Wallet], 
-                    CASE 
-                        WHEN c.CategoryType = 'Expense' THEN (b.MonthlyLimit - ISNULL(SUM(w.Amount), 0)) 
-                        ELSE (ISNULL(SUM(w.Amount), 0) - b.MonthlyLimit) 
-                    END AS [Net]  -- Net for income will be negative
-                FROM Categories c
-                LEFT JOIN Budget b ON c.CategoryID = b.CategoryID
-                LEFT JOIN Wallet w ON c.CategoryID = w.CategoryID";
+            SELECT 
+                FORMAT(w.TransactionDate, 'MMM-yyyy') AS [Date],
+                c.CategoryName AS [Category], 
+                c.CategoryType AS [Type], 
+                b.MonthlyLimit AS [Budget], 
+                ISNULL(SUM(w.Amount), 0) AS [Wallet], 
+                CASE 
+                    WHEN c.CategoryType = 'Expense' THEN (b.MonthlyLimit - ISNULL(SUM(w.Amount), 0)) 
+                    ELSE (ISNULL(SUM(w.Amount), 0) - b.MonthlyLimit) 
+                END AS [Net] 
+            FROM Categories c
+            LEFT JOIN Budget b ON c.CategoryID = b.CategoryID
+            LEFT JOIN Wallet w ON c.CategoryID = w.CategoryID";
 
-                    // If a specific month is selected, add a filter for the month
+                    // Apply month filter if selected
                     if (!string.IsNullOrEmpty(selectedMonth))
                     {
                         query += " WHERE MONTH(w.TransactionDate) = @Month";
                     }
 
+                    // Apply category filter if selected
+                    if (!string.IsNullOrEmpty(selectedCategory) && selectedCategory != "All")
+                    {
+                        query += string.IsNullOrEmpty(selectedMonth) ? " WHERE" : " AND";
+                        query += " c.CategoryName = @CategoryName";  // Filter by CategoryName now
+                    }
+
                     query += @"
-                GROUP BY 
-                    FORMAT(w.TransactionDate, 'MMM-yyyy'),
-                    c.CategoryName, 
-                    c.CategoryType, 
-                    b.MonthlyLimit
-                ORDER BY [Date] DESC";
+            GROUP BY 
+                FORMAT(w.TransactionDate, 'MMM-yyyy'),
+                c.CategoryName, 
+                c.CategoryType, 
+                b.MonthlyLimit
+            ORDER BY [Date] DESC";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        // Add parameters for filters
                         if (!string.IsNullOrEmpty(selectedMonth))
                         {
-                            // Convert the month name to a month number
                             int monthNumber = DateTime.ParseExact(selectedMonth, "MMMM", System.Globalization.CultureInfo.InvariantCulture).Month;
-                            command.Parameters.AddWithValue("@Month", monthNumber); // Pass the month number to the query
+                            command.Parameters.AddWithValue("@Month", monthNumber);
+                        }
+                        if (!string.IsNullOrEmpty(selectedCategory) && selectedCategory != "All")
+                        {
+                            command.Parameters.AddWithValue("@CategoryName", selectedCategory);  // Updated parameter for category name
                         }
 
                         SqlDataReader reader = command.ExecuteReader();
@@ -141,6 +154,7 @@ namespace PersonalBudgetTracker
                 }
             }
         }
+
 
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -175,16 +189,16 @@ namespace PersonalBudgetTracker
 
                     // Updated query to sum the remaining balances
                     string query = @"
-                SELECT SUM(
-                        CASE 
-                            WHEN c.CategoryType = 'Income' THEN (w.Amount - b.MonthlyLimit)
-                            WHEN c.CategoryType = 'Expense' THEN (b.MonthlyLimit - w.Amount)
-                            ELSE 0
-                        END
-                    ) AS TotalRemainingBalance
-                FROM Wallet w
-                JOIN Categories c ON w.CategoryID = c.CategoryID
-                JOIN Budget b ON c.CategoryID = b.CategoryID;";
+            SELECT SUM(
+                    CASE 
+                        WHEN c.CategoryType = 'Income' THEN (w.Amount - b.MonthlyLimit)
+                        WHEN c.CategoryType = 'Expense' THEN (b.MonthlyLimit - w.Amount)
+                        ELSE 0
+                    END
+                ) AS TotalRemainingBalance
+            FROM Wallet w
+            JOIN Categories c ON w.CategoryID = c.CategoryID
+            JOIN Budget b ON c.CategoryID = b.CategoryID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -200,8 +214,19 @@ namespace PersonalBudgetTracker
                             }
                         }
 
-                        // Update the lblRemainingBudget label with the total remaining balance
-                        lblRemainingBudget.Text = $"Remaining Budget: ${totalRemainingBalance:F2}";
+                        // Check if the remaining balance is positive or negative
+                        if (totalRemainingBalance > 0)
+                        {
+                            lblRemainingBudget.Text = $"Saved: ${totalRemainingBalance:F2}";
+                        }
+                        else if (totalRemainingBalance < 0)
+                        {
+                            lblRemainingBudget.Text = $"Overspent: ${Math.Abs(totalRemainingBalance):F2}";
+                        }
+                        else
+                        {
+                            lblRemainingBudget.Text = "No Balance";
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -212,28 +237,27 @@ namespace PersonalBudgetTracker
         }
 
 
-
-
-
         private void btnFilter_Click(object sender, EventArgs e)
         {
             string selectedMonth = cbFilterMonth.SelectedItem.ToString();
+            string selectedCategoryType = cbFilterCategory.SelectedItem.ToString();
 
             if (selectedMonth == "All")
             {
                 // Load data without month filtering if "All" is selected
-                LoadBudgetData();  // Now we can call this without the month argument
+                LoadBudgetData(null, selectedCategoryType);  // Pass selectedCategoryType
             }
-            else if (selectedMonth != "")
+            else if (!string.IsNullOrEmpty(selectedMonth))
             {
-                // Filter data by the selected month
-                LoadBudgetData(selectedMonth);  // Pass the selected month to the method
+                // Filter data by the selected month and category
+                LoadBudgetData(selectedMonth, selectedCategoryType);  // Pass both filters
             }
             else
             {
                 MessageBox.Show("Please select a month to filter data.");
             }
         }
+
 
 
         private void btnAdd_Click(object sender, EventArgs e)
