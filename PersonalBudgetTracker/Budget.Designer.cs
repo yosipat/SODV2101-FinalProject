@@ -51,6 +51,10 @@
             lblRemainingBudget = new Label();
             pictureBox3 = new PictureBox();
             label8 = new Label();
+            lblBudgetedIncome = new Label();
+            lblTotalIncome = new Label();
+            pictureBox4 = new PictureBox();
+            pictureBox5 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
