@@ -94,7 +94,7 @@
             groupBox1.Size = new Size(399, 468);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Add / Modify / Delete";
+            groupBox1.Text = "Add Transaction";
             // 
             // cbType
             // 

@@ -1,4 +1,5 @@
-﻿namespace PersonalBudgetTracker
+﻿
+namespace PersonalBudgetTracker
 {
     partial class Budget
     {
@@ -38,28 +39,18 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
-            textBox1 = new TextBox();
+            txtBudgetLimit = new TextBox();
             lblBudgetLimit = new Label();
-            comboBox1 = new ComboBox();
-            button1 = new Button();
+            cbFilterMonth = new ComboBox();
+            btnFilter = new Button();
             lblCategory = new Label();
-            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            lblTotalExpense = new Label();
-            lblTotalBudget = new Label();
-            lblControl = new Label();
             lblRemainingBudget = new Label();
-            pictureBox3 = new PictureBox();
             label8 = new Label();
-            lblBudgetedIncome = new Label();
-            lblTotalIncome = new Label();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
+            btnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -91,7 +82,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(592, 290);
+            dataGridView1.Size = new Size(592, 370);
             dataGridView1.TabIndex = 2;
             // 
             // cbCategory
@@ -108,10 +99,10 @@
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(btnAdd);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtBudgetLimit);
             groupBox1.Controls.Add(lblBudgetLimit);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(cbFilterMonth);
+            groupBox1.Controls.Add(btnFilter);
             groupBox1.Controls.Add(lblCategory);
             groupBox1.Controls.Add(cbCategory);
             groupBox1.Location = new Point(692, 46);
@@ -160,12 +151,12 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
-            // textBox1
+            // txtBudgetLimit
             // 
-            textBox1.Location = new Point(27, 159);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(352, 31);
-            textBox1.TabIndex = 8;
+            txtBudgetLimit.Location = new Point(27, 159);
+            txtBudgetLimit.Name = "txtBudgetLimit";
+            txtBudgetLimit.Size = new Size(352, 31);
+            txtBudgetLimit.TabIndex = 8;
             // 
             // lblBudgetLimit
             // 
@@ -176,23 +167,23 @@
             lblBudgetLimit.TabIndex = 7;
             lblBudgetLimit.Text = "Budget Limit\n";
             // 
-            // comboBox1
+            // cbFilterMonth
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(27, 360);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(352, 33);
-            comboBox1.TabIndex = 6;
+            cbFilterMonth.FormattingEnabled = true;
+            cbFilterMonth.Location = new Point(27, 360);
+            cbFilterMonth.Name = "cbFilterMonth";
+            cbFilterMonth.Size = new Size(352, 33);
+            cbFilterMonth.TabIndex = 6;
             // 
-            // button1
+            // btnFilter
             // 
-            button1.Location = new Point(267, 409);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 5;
-            button1.Text = "Filter";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnFilter.Location = new Point(267, 409);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(112, 34);
+            btnFilter.TabIndex = 5;
+            btnFilter.Text = "Filter";
+            btnFilter.UseVisualStyleBackColor = true;
+            btnFilter.Click += btnFilter_Click;
             // 
             // lblCategory
             // 
@@ -202,17 +193,6 @@
             lblCategory.Size = new Size(84, 25);
             lblCategory.TabIndex = 4;
             lblCategory.Text = "Category";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = SystemColors.GradientInactiveCaption;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(65, 481);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(35, 35);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 31;
-            pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -225,54 +205,15 @@
             pictureBox1.TabIndex = 30;
             pictureBox1.TabStop = false;
             // 
-            // lblTotalExpense
-            // 
-            lblTotalExpense.AutoSize = true;
-            lblTotalExpense.BackColor = SystemColors.GradientInactiveCaption;
-            lblTotalExpense.Location = new Point(103, 486);
-            lblTotalExpense.Name = "lblTotalExpense";
-            lblTotalExpense.Size = new Size(122, 25);
-            lblTotalExpense.TabIndex = 28;
-            lblTotalExpense.Text = "Total Expense:";
-            // 
-            // lblTotalBudget
-            // 
-            lblTotalBudget.AutoSize = true;
-            lblTotalBudget.BackColor = SystemColors.GradientInactiveCaption;
-            lblTotalBudget.Location = new Point(103, 445);
-            lblTotalBudget.Name = "lblTotalBudget";
-            lblTotalBudget.Size = new Size(115, 25);
-            lblTotalBudget.TabIndex = 27;
-            lblTotalBudget.Text = "Total Budget:";
-            // 
-            // lblControl
-            // 
-            lblControl.BackColor = SystemColors.GradientInactiveCaption;
-            lblControl.Location = new Point(53, 428);
-            lblControl.Name = "lblControl";
-            lblControl.Size = new Size(592, 99);
-            lblControl.TabIndex = 29;
-            // 
             // lblRemainingBudget
             // 
             lblRemainingBudget.AutoSize = true;
             lblRemainingBudget.BackColor = SystemColors.GradientInactiveCaption;
-            lblRemainingBudget.Location = new Point(369, 57);
+            lblRemainingBudget.Location = new Point(369, 61);
             lblRemainingBudget.Name = "lblRemainingBudget";
             lblRemainingBudget.Size = new Size(161, 25);
             lblRemainingBudget.TabIndex = 32;
             lblRemainingBudget.Text = "Remaining Budget:";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = SystemColors.GradientInactiveCaption;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(65, 440);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(35, 35);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 33;
-            pictureBox3.TabStop = false;
             // 
             // label8
             // 
@@ -282,17 +223,23 @@
             label8.Size = new Size(340, 57);
             label8.TabIndex = 34;
             // 
+            // btnExport
+            // 
+            btnExport.Location = new Point(533, 508);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(112, 34);
+            btnExport.TabIndex = 35;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
+            // 
             // Budget
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureBox3);
+            Controls.Add(btnExport);
             Controls.Add(lblRemainingBudget);
-            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Controls.Add(lblTotalExpense);
-            Controls.Add(lblTotalBudget);
-            Controls.Add(lblControl);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
@@ -302,35 +249,45 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private void lblBudgetedExpense_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
 
         private Label label1;
         private DataGridView dataGridView1;
         private ComboBox cbCategory;
         private GroupBox groupBox1;
         private Label lblCategory;
-        private Button button1;
+        private Button btnFilter;
         private Label lblBudgetLimit;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cbFilterMonth;
+        private TextBox txtBudgetLimit;
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
         private Label label2;
-        private PictureBox pictureBox2;
         private PictureBox pictureBox1;
-        private Label lblTotalExpense;
-        private Label lblTotalBudget;
-        private Label lblControl;
         private Label lblRemainingBudget;
-        private PictureBox pictureBox3;
         private Label label8;
+        private Button btnExport;
     }
 }
