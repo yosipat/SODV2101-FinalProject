@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
+using System.Text;
 using System.Windows.Forms;
 
 namespace PersonalBudgetTracker
@@ -8,6 +9,7 @@ namespace PersonalBudgetTracker
     public partial class Wallet : UserControl
     {
         public string connectionString { get; set; }
+
 
         public Wallet()
         {
@@ -361,6 +363,55 @@ namespace PersonalBudgetTracker
             }
         }
 
+        private void ExportDataGridViewToCSV(DataGridView dgv)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";  
+            saveFileDialog.FileName = "WalletData.csv";  
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        StringBuilder sb = new StringBuilder();
+
+                        foreach (DataGridViewColumn column in dgv.Columns)
+                        {
+                            if (column.Visible)
+                            {
+                                sb.Append(column.HeaderText + ",");
+                            }
+                        }
+                        sb.AppendLine();  
+
+                        foreach (DataGridViewRow row in dgv.Rows)
+                        {
+                            if (row.IsNewRow) continue;  
+
+                            foreach (DataGridViewCell cell in row.Cells)
+                            {
+                                if (cell.Visible)  
+                                {
+                                    sb.Append(cell.Value?.ToString().Replace(",", ";") + ",");  
+                                }
+                            }
+                            sb.AppendLine();  
+                        }
+
+                        writer.Write(sb.ToString());
+                    }
+
+                    MessageBox.Show("Data exported successfully to CSV!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error exporting data: " + ex.Message);  
+                }
+            }
+        }
+
         // Helper method to get CategoryID from Category name
         private int GetCategoryIdByName(string categoryName)
         {
@@ -386,6 +437,11 @@ namespace PersonalBudgetTracker
             }
 
             return categoryId;
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportDataGridViewToCSV(dataGridView1);
         }
     }
 }

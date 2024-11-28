@@ -29,21 +29,34 @@
         private void InitializeComponent()
         {
             label1 = new Label();
+            btnExport = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(136, 184);
+            label1.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
+            label1.Location = new Point(53, 57);
             label1.Name = "label1";
-            label1.Size = new Size(66, 25);
+            label1.Size = new Size(107, 38);
             label1.TabIndex = 0;
-            label1.Text = "setting";
+            label1.Text = "Setting";
+            // 
+            // btnExport
+            // 
+            btnExport.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExport.Location = new Point(468, 245);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(207, 71);
+            btnExport.TabIndex = 1;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = true;
             // 
             // Setting
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnExport);
             Controls.Add(label1);
             Name = "Setting";
             Size = new Size(1140, 570);
@@ -54,5 +67,6 @@
         #endregion
 
         private Label label1;
+        private Button btnExport;
     }
 }

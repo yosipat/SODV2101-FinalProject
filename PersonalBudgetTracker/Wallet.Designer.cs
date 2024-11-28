@@ -47,6 +47,7 @@
             lblBalance = new Label();
             pictureBox1 = new PictureBox();
             label8 = new Label();
+            btnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -71,7 +72,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(592, 388);
+            dataGridView1.Size = new Size(592, 366);
             dataGridView1.TabIndex = 1;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
@@ -230,10 +231,22 @@
             label8.Size = new Size(260, 57);
             label8.TabIndex = 20;
             // 
+            // btnExport
+            // 
+            btnExport.BackColor = SystemColors.ButtonFace;
+            btnExport.Location = new Point(533, 511);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(112, 34);
+            btnExport.TabIndex = 22;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
+            // 
             // Wallet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnExport);
             Controls.Add(pictureBox1);
             Controls.Add(lblBalance);
             Controls.Add(label2);
@@ -268,5 +281,6 @@
         private Label lblBalance;
         private PictureBox pictureBox1;
         private Label label8;
+        private Button btnExport;
     }
 }

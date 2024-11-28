@@ -20,7 +20,8 @@ namespace PersonalBudgetTracker
             InitializeComponent();
         }
 
-        public void runSetting() {
-            }
+        public void runSetting()
+        {
+        }
     }
 }
