@@ -248,3 +248,4 @@ C:\Users\limsa\Source\Repos\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debu
 C:\Users\limsa\Source\Repos\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.pdb
 C:\Users\limsa\Source\Repos\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.genruntimeconfig.cache
 C:\Users\limsa\Source\Repos\SODV2101-FinalProject\PersonalBudgetTracker\obj\Debug\net8.0-windows\ref\PersonalBudgetTracker.dll
+C:\Users\Stephanie\Desktop\Software Development\Term 3\SODV2101 - Rapid Application Development\Project\Phase 2\PersonalBudgetTracker\obj\Debug\net8.0-windows\PersonalBudgetTracker.Budget.resources

@@ -14,7 +14,7 @@ namespace PersonalBudgetTracker
     {
 
         //public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
-        public string connectionString = "Data Source=JEIN\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
+        public string connectionString = "Data Source=STEPH-LAPTOP\\SQLEXPRESS; Initial Catalog= BudgetTracker; Integrated Security=True; TrustServerCertificate=true";
         public BaseForm()
         {
 
