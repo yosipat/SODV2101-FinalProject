@@ -69,6 +69,7 @@
             // 
             // txtName
             // 
+            txtName.BackColor = SystemColors.InactiveCaption;
             txtName.Location = new Point(61, 227);
             txtName.Name = "txtName";
             txtName.PlaceholderText = "Enter your Name";
