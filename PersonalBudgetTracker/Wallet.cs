@@ -161,10 +161,8 @@ namespace PersonalBudgetTracker
                             cbCategory.Items.Add(reader["CategoryName"].ToString());
                         }
 
-                        if (cbCategory.Items.Count > 0)
-                        {
-                            cbCategory.SelectedIndex = 0; // Default select the first category
-                        }
+                        // Do not select any category by default
+                        cbCategory.SelectedIndex = -1;
                     }
                 }
                 catch (Exception ex)
@@ -173,6 +171,7 @@ namespace PersonalBudgetTracker
                 }
             }
         }
+
 
         // Event handler when the user selects a Type (Income/Expense)
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,12 +230,23 @@ namespace PersonalBudgetTracker
                 string amount = selectedRow.Cells["Amount"].Value.ToString();
                 string date = selectedRow.Cells["TransactionDate"].Value.ToString();
 
-                cbCategory.SelectedItem = category;
-                cbType.SelectedItem = GetCategoryTypeByName(category); // Sync Category Type with Category
+                // Get the type of the selected category and load the corresponding categories
+                string categoryType = GetCategoryTypeByName(category);
+                cbType.SelectedItem = categoryType;
+
+                // Ensure categories for the type are loaded before selecting the category
+                LoadCategories(categoryType);
+
+                // Select the category in cbCategory using FindStringExact
+                int categoryIndex = cbCategory.FindStringExact(category);
+                cbCategory.SelectedIndex = categoryIndex;
+
+                // Update other fields
                 dtDate.Value = DateTime.Parse(date);
                 txtAmount.Text = amount;
             }
         }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

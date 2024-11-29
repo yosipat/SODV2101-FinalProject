@@ -170,17 +170,32 @@ namespace PersonalBudgetTracker
             DataGridViewRow selectedRow = dataGridViewBudget.SelectedRows[0];
             int id = Convert.ToInt32(selectedRow.Cells["CategoryID"].Value);
 
-            string deleteQuery = "DELETE FROM Categories WHERE CategoryID = @CategoryID";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+
+                    // Check for references in the Budget table
+                    string checkQuery = "SELECT COUNT(*) FROM Budget WHERE CategoryID = @CategoryID";
+                    using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@CategoryID", id);
-                        int rowsAffected = command.ExecuteNonQuery();
+                        checkCommand.Parameters.AddWithValue("@CategoryID", id);
+                        int count = (int)checkCommand.ExecuteScalar();
+
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Cannot delete this category because it is referenced in the Budget table.");
+                            return;
+                        }
+                    }
+
+                    // Proceed with deletion if no references are found
+                    string deleteQuery = "DELETE FROM Categories WHERE CategoryID = @CategoryID";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                    {
+                        deleteCommand.Parameters.AddWithValue("@CategoryID", id);
+                        int rowsAffected = deleteCommand.ExecuteNonQuery();
                         MessageBox.Show(rowsAffected > 0 ? "Record deleted successfully!" : "Failed to delete record.");
                     }
 
@@ -194,5 +209,6 @@ namespace PersonalBudgetTracker
                 }
             }
         }
+
     }
 }
