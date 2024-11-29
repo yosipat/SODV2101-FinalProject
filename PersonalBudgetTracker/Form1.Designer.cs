@@ -69,11 +69,12 @@
             // 
             // txtName
             // 
-            txtName.BackColor = SystemColors.InactiveCaption;
+            txtName.BackColor = SystemColors.GradientInactiveCaption;
+            txtName.BorderStyle = BorderStyle.None;
             txtName.Location = new Point(61, 227);
             txtName.Name = "txtName";
             txtName.PlaceholderText = "Enter your Name";
-            txtName.Size = new Size(174, 31);
+            txtName.Size = new Size(174, 24);
             txtName.TabIndex = 3;
             txtName.TextAlign = HorizontalAlignment.Center;
             // 

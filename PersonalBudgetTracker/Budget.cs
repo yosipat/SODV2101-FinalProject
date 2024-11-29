@@ -406,6 +406,10 @@ namespace PersonalBudgetTracker
                             // Reload the data
                             LoadBalanceOverview();
                             LoadBudgetData();
+
+                            // Clear the fields after adding
+                            cbCategory.SelectedIndex = -1; // Clears the selected category
+                            txtBudgetLimit.Clear(); // Clears the text box for the budget limit
                         }
                     }
                 }
@@ -469,6 +473,10 @@ namespace PersonalBudgetTracker
                             MessageBox.Show("Budget deleted successfully!");
 
                             LoadBudgetData();
+
+                            // Clear the fields after adding
+                            cbCategory.SelectedIndex = -1; // Clears the selected category
+                            txtBudgetLimit.Clear(); // Clears the text box for the budget limit
                         }
                     }
                 }

@@ -185,6 +185,8 @@ namespace PersonalBudgetTracker
                     }
 
                     LoadAllData();
+                    cbType.SelectedIndex = -1;
+                    txtCategory.Clear();
                 }
                 catch (Exception ex)
                 {

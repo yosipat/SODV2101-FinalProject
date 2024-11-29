@@ -444,9 +444,6 @@ namespace PersonalBudgetTracker
             ExportDataGridViewToCSV(dataGridView1);
         }
 
-        private void lblBalance_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
